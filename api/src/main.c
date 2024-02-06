@@ -7,6 +7,10 @@
 
 #define __DEBUG__ 0
 
+#if __DEBUG__
+# define DEBUG_PORT 8080
+#endif
+
 #define ERR_CODE_NO_PORT 1
 #define ERR_CODE_CREATE_APISOCK 2
 #define ERR_CODE_CLOSE_APISOCK 3
@@ -23,12 +27,17 @@
 int
 main(int argc, char *argv[] , char *envp)
 {
+    int api_bind_port;
+#if __DEBUG__
+    api_bind_port = DEBUG_PORT;
+#else
     if (argc < 2) {
         dprintf(STDERR_FILENO, "No binding port for socket! [ 1000 - 65000 ]\n");
         exit(ERR_CODE_NO_PORT);
     }
 
-    const int api_bind_port = (const int) atoi(argv[1]);
+    api_bind_port = atoi(argv[1]);
+#endif
     if (api_bind_port < 1000 || api_bind_port > 65000) {
         dprintf(STDERR_FILENO, "Given port number is out of range! [ 1000 - 65000 ]\n");
         exit(ERR_CODE_APIBINDPORT_OUT_OF_RANGE);
