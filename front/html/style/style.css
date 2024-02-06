@@ -1,0 +1,60 @@
+* {
+  font-family: Montserrat, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: separate;
+  user-select: none;
+  -webkit-user-drag: unset;
+  border-spacing: 10px;
+  width: 100%;
+}
+
+td {
+  padding: 5px 0px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.thStyle {
+  padding: 5px 20px;
+  white-space: nowrap;
+}
+
+.content {
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.buttons {
+  /* border: 1px solid black; */
+  margin: 50px;
+  display: inherit;
+  justify-content: space-around;
+  width: 30%;
+  padding: 20px 10px;
+  min-width: fit-content;
+}
+
+#addProduct, #remProduct {
+  padding: 10px 10px;
+  font-style: italic;
+  font-weight: bold;
+  white-space: nowrap;
+}
