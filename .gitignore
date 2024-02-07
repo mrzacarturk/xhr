@@ -1,3 +1,4 @@
 api/src/*.out
-api/out
-front/static
+api/out/
+front/static/
+.vscode/

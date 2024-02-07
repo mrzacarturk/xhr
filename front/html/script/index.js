@@ -24,21 +24,23 @@ xhr.onreadystatechange = () => {
         if (status === 0 || (status >= 200 || status < 400)) {
             // Typical action to be performed when the document is ready:
             const data = JSON.parse(xhr.responseText);
-            let a = Object.keys(data.products[0]);
+            console.log(data);
+            // let a = Object.keys(data.products[0]);
 
             /* NODE */
-            let node;
-            a.forEach((e) => {
-                node = document.createElement('th');
-                node.classList.add('thStyle')
-                node.innerText = utils_capitalize(e);
-                html_tablecols.appendChild(node);
-            });
+            // let node;
+            // a.forEach((e) => {
+            //     node = document.createElement('th');
+            //     node.classList.add('thStyle')
+            //     node.innerText = utils_capitalize(e);
+            //     html_tablecols.appendChild(node);
+            // });
         }
     }
 };
 
-xhr.open("GET", "https://dummyjson.com/products", true);
+// xhr.open("GET", "https://dummyjson.com/products", true);
+xhr.open("GET", "http://127.0.0.1:8080", true);
 xhr.send();
 
 add_button.addEventListener('click', () => {
