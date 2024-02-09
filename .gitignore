@@ -2,3 +2,5 @@ api/src/*.out
 api/out/
 front/static/
 .vscode/
+test
+test.*
