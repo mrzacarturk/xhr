@@ -57,4 +57,13 @@ tr:nth-child(even) {
   font-style: italic;
   font-weight: bold;
   white-space: nowrap;
+  transition: 0.5s;
+}
+
+#addProduct:hover{
+  background-color: black; color: white;
+}
+
+#remProduct:hover{
+  background-color: black; color: white;
 }
