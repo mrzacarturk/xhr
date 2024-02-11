@@ -1,4 +1,4 @@
-# NOTES
+# <i>Back</i>end
 
 ## Example HTTP Header - G**gle Chrome
 ```
@@ -57,9 +57,22 @@ make redebug    # clean debug run
 #define ERR_CODE_ACCEPTSOCK_SETLINGER_FAIL 7
 #define ERR_CODE_ACCEPTSOCK_READ_FAIL 8
 #define ERR_CODE_ACCEPTSOCK_SEND_FAIL 9
-#define ERR_CODE_ACCEPTSOCK_CLOSE 10
+#define ERR_CODE_ACCEPTSOCK_CLOSE_FAIL 10
 #define ERR_CODE_APISOCK_CLOSE 11
 #define ERR_CODE_MALLOC_FAIL 12
+
+
+__BEGIN_DECLS
+void      utils_putchar(int fd, char c);
+size_t    utils_strlen(const char *str);
+void      utils_putstr(int fd, const char *str);
+void      utils_putnbr(int fd, int nb);
+void *    utils_memset(void *dest, int c, size_t n);
+void      message(char *fmt, ...);
+int       utils_strncmp(const char *a, const char *b, size_t n);
+int       find_url_index(char req[], char *search);
+__END_DECLS
+
 
 
 int api_bindport;
@@ -98,9 +111,9 @@ while (1)
     acceptsock_readval = read(ACCEPTSOCK, DYN_buff, DEBUG_CLIDATA_BUFFSZ);
 
     requested_urllength = find_url_index(DYN_buff, " HTTP/1.1\r\n");
-    DYN_requested_url = (char *) malloc(sizeof(char) * i);
+    DYN_requested_url = (char *) malloc(sizeof(char) * requested_urllength);
 
-    a = send(ACCEPTSOCK, block, blocklen, 0);
+    a = send(ACCEPTSOCK, http_header_response, response_len, 0);
     close_acceptsock = close(ACCEPTSOCK);
 }
 
@@ -109,4 +122,28 @@ int close_apisock = close(APISOCK);
 
 ```
 
+# <i>Front</i>end
+
+### Including Tailwind
+```html
+<head>
+    <!-- Latest version of Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adding some custom CSS to the Tailwind -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <!-- Using a Tailwind plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+</head>
+```
+### [Tailwind CDN Latest Version](https://cdn.tailwindcss.com)
+### [Tailwind Cheatsheet](https://nerdcave.com/tailwind-cheat-sheet)
+
+
 #### _**“We make an idol of our fear and that idol we call God.”**_
+![xhr](./xhr.jpg?raw=true)

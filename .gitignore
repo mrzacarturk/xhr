@@ -4,3 +4,5 @@ front/static/
 .vscode/
 test
 test.*
+*.exe
+api/tests/
